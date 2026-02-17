@@ -1,5 +1,6 @@
 local uilib = require("uilib")
 local element = require("uilib.elements.button")
+local label = require("uilib.elements.label")
 
 local ui = uilib:newUI(term.current())
 
@@ -19,7 +20,15 @@ while true do
     ui:handleEvent(ev)
     for i,a in ipairs(ui:getEvents()) do
         if a.type == "button_press" then
-            error("BUTTON IS PRESSED",0)
+            ui:addElement(label:new({
+                x = 5,
+                y = 15,
+                w = 15,
+                h = 3,
+                bg = colors.black,
+                fg = colors.white,
+                text = "U pressed the button"
+            }),"Label")
         end
     end
 end
